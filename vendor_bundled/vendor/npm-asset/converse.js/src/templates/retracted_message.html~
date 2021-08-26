@@ -1,0 +1,18 @@
+<div class="message chat-msg {{{o.type}}} chat-info--retracted"
+        data-isodate="{{{o.time}}}" data-msgid="{{{o.msgid}}}" data-from="{{{o.from}}}" data-encrypted="{{{o.is_encrypted}}}">
+    <canvas class="avatar chat-msg__avatar" height="36" width="36"></canvas>
+    <div class="chat-msg__content chat-msg__content--{{{o.sender}}} {{{o.is_me_message ? 'chat-msg__content--action' : ''}}}">
+        <span class="chat-msg__heading">
+            <span class="chat-msg__author">{{{o.username}}}</span>
+            <time timestamp="{{{o.isodate}}}" class="chat-msg__time">{{{o.pretty_time}}}</time>
+            {[ if (o.is_encrypted) { ]}<span class="fa fa-lock"></span>{[ } ]}
+        </span>
+        <div class="chat-msg__body chat-msg__body--{{{o.type}}} {{{o.received ? 'chat-msg__body--received' : '' }}} {{{o.is_delayed ? 'chat-msg__body--delayed' : '' }}}">
+            <div class="chat-msg__message">
+                <div>{{{o.retraction_text}}}</div>
+                {[ if (o.moderation_reason) { ]}<q class="chat-info--retracted__reason">{{{o.moderation_reason}}}</q>{[ } ]}
+            </div>
+        </div>
+    </div>
+</div>
+
